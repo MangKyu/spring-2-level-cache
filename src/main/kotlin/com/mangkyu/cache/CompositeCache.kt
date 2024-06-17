@@ -18,10 +18,11 @@ data class CompositeCache(
 
     override fun get(key: Any): Cache.ValueWrapper? {
         for (cache in caches) {
-            val value = cache.get(key)
-            if (value != null) {
+            val valueWrapper = cache.get(key)
+            val value = valueWrapper?.get()
+            if (valueWrapper != null && value != null) {
                 updatableCacheManager.update(cache, key, value)
-                return value
+                return valueWrapper
             }
         }
 
