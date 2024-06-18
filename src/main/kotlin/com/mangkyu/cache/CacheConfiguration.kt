@@ -30,8 +30,8 @@ class CacheConfiguration(
 ) {
 
     @Bean
-    fun localCacheManager(): ImmutableSimpleCacheManager {
-        return ImmutableSimpleCacheManager(
+    fun localCacheManager(): LocalCacheManager {
+        return LocalCacheManager(
             caches = CacheName.entries
                 .filter { it.cacheType == CacheType.LOCAL || it.cacheType == CacheType.COMPOSITE }
                 .map { toCaffeineCache(it) },

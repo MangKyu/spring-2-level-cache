@@ -6,7 +6,7 @@ import org.springframework.cache.CacheManager
 import org.springframework.lang.Nullable
 import java.util.concurrent.ConcurrentHashMap
 
-class ImmutableSimpleCacheManager(
+class LocalCacheManager(
     private val caches: List<Cache> = emptyList(),
 ) : CacheManager, UpdatableCacheManager {
 
